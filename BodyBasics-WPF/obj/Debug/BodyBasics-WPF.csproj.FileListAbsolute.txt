@@ -1,1 +1,16 @@
 C:\Users\EE113D\Desktop\BodyBasics-WPF\bin\AnyCPU\Debug\BodyBasics-WPF.exe.config
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\bin\AnyCPU\Debug\BodyBasics-WPF.exe.config
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\bin\AnyCPU\Debug\BodyBasics-WPF.exe
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\bin\AnyCPU\Debug\BodyBasics-WPF.pdb
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\bin\AnyCPU\Debug\Microsoft.Kinect.dll
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\bin\AnyCPU\Debug\Microsoft.Kinect.xml
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\obj\Debug\BodyBasics-WPF.csprojResolveAssemblyReference.cache
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\obj\Debug\MainWindow.baml
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\obj\Debug\MainWindow.g.cs
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\obj\Debug\App.g.cs
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\obj\Debug\BodyBasics-WPF_MarkupCompile.cache
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\obj\Debug\BodyBasics-WPF.g.resources
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\obj\Debug\Microsoft.Samples.Kinect.BodyBasics.Properties.Resources.resources
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\obj\Debug\BodyBasics-WPF.csproj.GenerateResource.Cache
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\obj\Debug\BodyBasics-WPF.exe
+C:\Users\EE113D\Documents\GitHub\KinectSkeletonData\BodyBasics-WPF\obj\Debug\BodyBasics-WPF.pdb

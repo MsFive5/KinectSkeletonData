@@ -16,6 +16,7 @@ namespace Microsoft.Samples.Kinect.BodyBasics
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
     using Microsoft.Kinect;
+    using System.Windows.Forms;
 
     /// <summary>
     /// Interaction logic for MainWindow
@@ -130,6 +131,9 @@ namespace Microsoft.Samples.Kinect.BodyBasics
         /// <summary>
         /// Initializes a new instance of the MainWindow class.
         /// </summary>
+        /// 
+        private string saveFilePath = "";
+        private string saveFileName = "";
         public MainWindow()
         {
             // one sensor is currently supported
@@ -352,8 +356,17 @@ namespace Microsoft.Samples.Kinect.BodyBasics
 
                                 DepthSpacePoint depthSpacePoint = this.coordinateMapper.MapCameraPointToDepthSpace(position);
                                 jointPoints[jointType] = new Point(depthSpacePoint.X, depthSpacePoint.Y);
+                                if (jointType == JointType.Head)
+                                {
+                                    Int64 unixTimestamp = (Int64)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalMilliseconds;
+                                    System.IO.File.AppendAllText(this.saveFilePath+"\\"+this.saveFileName,
+                                        unixTimestamp+" "
+                                        +position.X + " "
+                                        +position.Y + " "
+                                        +position.Z + "\r\n");
+                                }
                             }
-
+                            //get the current datetime wrt 1970 in millisecond
                             this.DrawBody(joints, jointPoints, dc, drawPen);
 
                             this.DrawHand(body.HandLeftState, jointPoints[JointType.HandLeft], dc);
@@ -513,5 +526,20 @@ namespace Microsoft.Samples.Kinect.BodyBasics
             this.StatusText = this.kinectSensor.IsAvailable ? Properties.Resources.RunningStatusText
                                                             : Properties.Resources.SensorNotAvailableStatusText;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            DialogResult result = fbd.ShowDialog();
+            this.saveFilePath = fbd.SelectedPath;
+            string header_line = "timestamp \t x \t y \t z \r\n";
+            Int64 fileCreateTime = (Int64)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalMilliseconds;
+            this.saveFileName = "KINECT2_data_"+fileCreateTime+".txt";
+            System.IO.File.WriteAllText(this.saveFilePath + "\\" + this.saveFileName, header_line);
+        }
+        /// <summary>
+        /// when clicking on the start data collection button, 
+        /// select a local folder as the directory for saved files.
+        /// this.saveFilePath contains the string
     }
 }
