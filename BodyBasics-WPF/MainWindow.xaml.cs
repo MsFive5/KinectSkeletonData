@@ -134,6 +134,7 @@ namespace Microsoft.Samples.Kinect.BodyBasics
         /// 
         private string saveFilePath = "";
         private string saveFileName = "";
+        private List<JointType> selectedJoints = new List<JointType>();
         public MainWindow()
         {
             // one sensor is currently supported
@@ -343,7 +344,7 @@ namespace Microsoft.Samples.Kinect.BodyBasics
 
                             // convert the joint points to depth (display) space
                             Dictionary<JointType, Point> jointPoints = new Dictionary<JointType, Point>();
-
+                           
                             foreach (JointType jointType in joints.Keys)
                             {
                                 // sometimes the depth(Z) of an inferred joint may show as negative
@@ -356,10 +357,19 @@ namespace Microsoft.Samples.Kinect.BodyBasics
 
                                 DepthSpacePoint depthSpacePoint = this.coordinateMapper.MapCameraPointToDepthSpace(position);
                                 jointPoints[jointType] = new Point(depthSpacePoint.X, depthSpacePoint.Y);
-                                if (jointType == JointType.Head)
+                                if (jointType == JointType.FootRight)
                                 {
                                     Int64 unixTimestamp = (Int64)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalMilliseconds;
-                                    System.IO.File.AppendAllText(this.saveFilePath+"\\"+this.saveFileName,
+                                    System.IO.File.AppendAllText(this.saveFilePath+"\\"+this.saveFileName+"FootRight.txt",
+                                        unixTimestamp+" "
+                                        +position.X + " "
+                                        +position.Y + " "
+                                        +position.Z + "\r\n");
+                                }
+                                if (jointType == JointType.FootLeft)
+                                {
+                                    Int64 unixTimestamp = (Int64)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalMilliseconds;
+                                    System.IO.File.AppendAllText(this.saveFilePath+"\\"+this.saveFileName+"FootLeft.txt",
                                         unixTimestamp+" "
                                         +position.X + " "
                                         +position.Y + " "
@@ -532,14 +542,27 @@ namespace Microsoft.Samples.Kinect.BodyBasics
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             DialogResult result = fbd.ShowDialog();
             this.saveFilePath = fbd.SelectedPath;
-            string header_line = "timestamp \t x \t y \t z \r\n";
+            string header_line = "timestamp  X  Y  Z  \r\n";
             Int64 fileCreateTime = (Int64)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalMilliseconds;
-            this.saveFileName = "KINECT2_data_"+fileCreateTime+".txt";
-            System.IO.File.WriteAllText(this.saveFilePath + "\\" + this.saveFileName, header_line);
+            this.saveFileName = "KINECT2_data_"+fileCreateTime;
+            if (this.selectedJoints.Contains(JointType.FootRight))
+            { System.IO.File.WriteAllText(this.saveFilePath + "\\" + this.saveFileName+"FootRight.txt", header_line);}
+            if (this.selectedJoints.Contains(JointType.FootLeft))
+            { System.IO.File.WriteAllText(this.saveFilePath + "\\" + this.saveFileName+"FootLeft.txt", header_line);}
+            
         }
         /// <summary>
         /// when clicking on the start data collection button, 
         /// select a local folder as the directory for saved files.
         /// this.saveFilePath contains the string
+       
+        private void RightFoot_Checked(object sender, RoutedEventArgs e)
+        {
+            this.selectedJoints.Add(JointType.FootRight);
+        }
+        private void LeftFoot_Checked(object sender, RoutedEventArgs e)
+        {
+            this.selectedJoints.Add(JointType.FootLeft);
+        }
     }
 }

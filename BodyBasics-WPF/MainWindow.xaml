@@ -10,7 +10,7 @@
         <SolidColorBrush x:Key="KinectPurpleBrush" Color="#ff52318f" />
         <SolidColorBrush x:Key="KinectBlueBrush" Color="#ff00BCF2" />
     </Window.Resources>
-    <Grid Margin="10 0 10 0">
+    <Grid Margin="10,0,2,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -29,5 +29,7 @@
             <StatusBarItem Content="{Binding StatusText}" />
         </StatusBar>
         <Button x:Name="start_data_collection" Content="Start data Collection" HorizontalAlignment="Left" Margin="510,14,0,0" VerticalAlignment="Top" Width="152" Click="Button_Click" RenderTransformOrigin="0.218,0.487"/>
+        <CheckBox Content="LeftFoot" HorizontalAlignment="Left" Margin="599,13,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="LeftFoot_Checked"/>
+        <CheckBox Content="RightFoot" HorizontalAlignment="Left" Margin="598,33,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="RightFoot_Checked"/>
     </Grid>
 </Window>
