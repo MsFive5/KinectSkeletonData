@@ -375,6 +375,15 @@ namespace Microsoft.Samples.Kinect.BodyBasics
                                         +position.Y + " "
                                         +position.Z + "\r\n");
                                 }
+                                if (jointType == JointType.SpineBase)
+                                {
+                                    Int64 unixTimestamp = (Int64)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalMilliseconds;
+                                    System.IO.File.AppendAllText(this.saveFilePath + "\\" + this.saveFileName + "SpineBase.txt",
+                                        unixTimestamp + " "
+                                        + position.X + " "
+                                        + position.Y + " "
+                                        + position.Z + "\r\n");
+                                }
                             }
                             //get the current datetime wrt 1970 in millisecond
                             this.DrawBody(joints, jointPoints, dc, drawPen);
@@ -549,7 +558,8 @@ namespace Microsoft.Samples.Kinect.BodyBasics
             { System.IO.File.WriteAllText(this.saveFilePath + "\\" + this.saveFileName+"FootRight.txt", header_line);}
             if (this.selectedJoints.Contains(JointType.FootLeft))
             { System.IO.File.WriteAllText(this.saveFilePath + "\\" + this.saveFileName+"FootLeft.txt", header_line);}
-            
+            if (this.selectedJoints.Contains(JointType.SpineBase))
+            { System.IO.File.WriteAllText(this.saveFilePath + "\\" + this.saveFileName+"SpineBase.txt", header_line); }
         }
         /// <summary>
         /// when clicking on the start data collection button, 
@@ -563,6 +573,10 @@ namespace Microsoft.Samples.Kinect.BodyBasics
         private void LeftFoot_Checked(object sender, RoutedEventArgs e)
         {
             this.selectedJoints.Add(JointType.FootLeft);
+        }
+        private void SpineBase_Checked(object sender, RoutedEventArgs e)
+        {
+            this.selectedJoints.Add(JointType.SpineBase);
         }
     }
 }

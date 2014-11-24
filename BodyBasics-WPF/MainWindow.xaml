@@ -31,5 +31,6 @@
         <Button x:Name="start_data_collection" Content="Start data Collection" HorizontalAlignment="Left" Margin="510,14,0,0" VerticalAlignment="Top" Width="152" Click="Button_Click" RenderTransformOrigin="0.218,0.487"/>
         <CheckBox Content="LeftFoot" HorizontalAlignment="Left" Margin="599,13,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="LeftFoot_Checked"/>
         <CheckBox Content="RightFoot" HorizontalAlignment="Left" Margin="598,33,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="RightFoot_Checked"/>
+        <CheckBox Content="SpineBase" HorizontalAlignment="Left" Margin="598,53,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="SpineBase_Checked" RenderTransformOrigin="0.472,2.667"/>
     </Grid>
 </Window>
