@@ -357,31 +357,31 @@ namespace Microsoft.Samples.Kinect.BodyBasics
 
                                 DepthSpacePoint depthSpacePoint = this.coordinateMapper.MapCameraPointToDepthSpace(position);
                                 jointPoints[jointType] = new Point(depthSpacePoint.X, depthSpacePoint.Y);
-                                if (jointType == JointType.FootRight)
+                                if (jointType == JointType.FootRight && this.selectedJoints.Contains(JointType.FootRight))
                                 {
                                     Int64 unixTimestamp = (Int64)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalMilliseconds;
                                     System.IO.File.AppendAllText(this.saveFilePath+"\\"+this.saveFileName+"FootRight.txt",
-                                        unixTimestamp+" "
-                                        +position.X + " "
-                                        +position.Y + " "
+                                        unixTimestamp+", "
+                                        +position.X + ", "
+                                        +position.Y + ", "
                                         +position.Z + "\r\n");
                                 }
-                                if (jointType == JointType.FootLeft)
+                                if (jointType == JointType.FootLeft && this.selectedJoints.Contains(JointType.FootLeft))
                                 {
                                     Int64 unixTimestamp = (Int64)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalMilliseconds;
                                     System.IO.File.AppendAllText(this.saveFilePath+"\\"+this.saveFileName+"FootLeft.txt",
-                                        unixTimestamp+" "
-                                        +position.X + " "
-                                        +position.Y + " "
+                                        unixTimestamp+", "
+                                        +position.X + ", "
+                                        +position.Y + ", "
                                         +position.Z + "\r\n");
                                 }
-                                if (jointType == JointType.SpineBase)
+                                if (jointType == JointType.SpineBase && this.selectedJoints.Contains(JointType.SpineBase))
                                 {
                                     Int64 unixTimestamp = (Int64)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalMilliseconds;
                                     System.IO.File.AppendAllText(this.saveFilePath + "\\" + this.saveFileName + "SpineBase.txt",
-                                        unixTimestamp + " "
-                                        + position.X + " "
-                                        + position.Y + " "
+                                        unixTimestamp + ", "
+                                        + position.X + ", "
+                                        + position.Y + ", "
                                         + position.Z + "\r\n");
                                 }
                             }
