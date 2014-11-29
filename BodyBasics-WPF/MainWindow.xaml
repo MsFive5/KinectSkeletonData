@@ -32,5 +32,7 @@
         <CheckBox Content="LeftFoot" HorizontalAlignment="Left" Margin="599,13,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="LeftFoot_Checked"/>
         <CheckBox Content="RightFoot" HorizontalAlignment="Left" Margin="598,33,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="RightFoot_Checked"/>
         <CheckBox Content="SpineBase" HorizontalAlignment="Left" Margin="598,53,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="SpineBase_Checked" RenderTransformOrigin="0.472,2.667"/>
+        <CheckBox Content="HipRight" HorizontalAlignment="Left" Margin="599,73,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="HipRight_Checked" RenderTransformOrigin="0.472,2.667"/>
+        <CheckBox Content="HipLeft" HorizontalAlignment="Left" Margin="598,93,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="HipLeft_Checked" RenderTransformOrigin="0.472,2.667"/>
     </Grid>
 </Window>
