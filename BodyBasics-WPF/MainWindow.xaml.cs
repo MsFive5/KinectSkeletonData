@@ -405,6 +405,24 @@ namespace Microsoft.Samples.Kinect.BodyBasics
                                             + position.Y + ", "
                                             + position.Z + "\r\n");
                                     }
+                                    if (jointType == JointType.KneeRight && this.selectedJoints.Contains(JointType.KneeRight))
+                                    {
+                                        Int64 unixTimestamp = (Int64)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalMilliseconds;
+                                        System.IO.File.AppendAllText(this.saveFilePath + "\\" + this.saveFileName + "HipRight.txt",
+                                            unixTimestamp + ", "
+                                            + position.X + ", "
+                                            + position.Y + ", "
+                                            + position.Z + "\r\n");
+                                    }
+                                    if (jointType == JointType.KneeLeft && this.selectedJoints.Contains(JointType.KneeLeft))
+                                    {
+                                        Int64 unixTimestamp = (Int64)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalMilliseconds;
+                                        System.IO.File.AppendAllText(this.saveFilePath + "\\" + this.saveFileName + "HipLeft.txt",
+                                            unixTimestamp + ", "
+                                            + position.X + ", "
+                                            + position.Y + ", "
+                                            + position.Z + "\r\n");
+                                    }
                                 }
                             }
                             //get the current datetime wrt 1970 in millisecond
@@ -586,6 +604,10 @@ namespace Microsoft.Samples.Kinect.BodyBasics
             { System.IO.File.WriteAllText(this.saveFilePath + "\\" + this.saveFileName + "HipRight.txt", header_line); }
             if (this.selectedJoints.Contains(JointType.HipRight))
             { System.IO.File.WriteAllText(this.saveFilePath + "\\" + this.saveFileName + "HipLeft.txt", header_line); }
+            if (this.selectedJoints.Contains(JointType.KneeRight))
+            { System.IO.File.WriteAllText(this.saveFilePath + "\\" + this.saveFileName + "KneeRight.txt", header_line); }
+            if (this.selectedJoints.Contains(JointType.KneeRight))
+            { System.IO.File.WriteAllText(this.saveFilePath + "\\" + this.saveFileName + "KneeLeft.txt", header_line); }
             this.data_streaming = true;
         }
         /// <summary>
@@ -593,11 +615,11 @@ namespace Microsoft.Samples.Kinect.BodyBasics
         /// select a local folder as the directory for saved files.
         /// this.saveFilePath contains the string
        
-        private void RightFoot_Checked(object sender, RoutedEventArgs e)
+        private void FootRight_Checked(object sender, RoutedEventArgs e)
         {
             this.selectedJoints.Add(JointType.FootRight);
         }
-        private void LeftFoot_Checked(object sender, RoutedEventArgs e)
+        private void FootLeft_Checked(object sender, RoutedEventArgs e)
         {
             this.selectedJoints.Add(JointType.FootLeft);
         }
@@ -612,6 +634,14 @@ namespace Microsoft.Samples.Kinect.BodyBasics
         private void HipLeft_Checked(object sender, RoutedEventArgs e)
         {
             this.selectedJoints.Add(JointType.HipRight);
+        }
+        private void KneeLeft_Checked(object sender, RoutedEventArgs e)
+        {
+            this.selectedJoints.Add(JointType.KneeLeft);
+        }
+        private void KneeRight_Checked(object sender, RoutedEventArgs e)
+        {
+            this.selectedJoints.Add(JointType.KneeRight);
         }
     }
 }
